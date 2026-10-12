@@ -1,60 +1,60 @@
-# Windows 11 IoT Enterprise LTSC 2024: Convert Evaluation → Full License
+# Windows 11 IoT Enterprise LTSC 2024: Convierte Evaluación → Licencia Completa
 
-> **Updated 2026 edition.** Turn your Windows 11 **IoT Enterprise LTSC 2024 Evaluation**
-> into a fully licensed copy — **no reinstall, no data loss**, ~5 minutes.
-
----
-
-## What you need
-
-- Windows 11 **IoT Enterprise LTSC 2024** (evaluation) already installed
-- An **Administrator** account
-- A **genuine** IoT Enterprise LTSC 2024 product key
-- Stable internet connection
+> **Edición actualizada 2026.** Convierte tu Windows 11 **IoT Enterprise LTSC 2024 Evaluation**
+> a una copia con licencia completa — **sin reinstalar, sin perder datos**, en ~5 minutos.
 
 ---
 
-## Step 1 — Check your edition
+## Lo que necesitas
 
-Open **Command Prompt as Administrator** and run:
+- Windows 11 **IoT Enterprise LTSC 2024** (evaluación) ya instalado
+- Una cuenta de **Administrador**
+- Una **clave de producto genuina** de IoT Enterprise LTSC 2024
+- Conexión a internet estable
+
+---
+
+## Paso 1 — Comprueba tu edición
+
+Abre **Símbolo del sistema como administrador** y ejecuta:
 
 ```cmd
 winver
 slmgr /dlv
 ```
 
-Look at the line that says **Operating System / Edition**:
+Mira la línea de **Sistema operativo / Edición**:
 
-- ✅ Shows `Windows(R), IoTEnterpriseS` → **the SKU is already installed, skip Step 2**.
-- ❌ Shows `Core` / `Professional` / `Evaluation` → do **Step 2**.
+- ✅ Muestra `Windows(R), IoTEnterpriseS` → **el SKU ya está instalado, salta al Paso 2**.
+- ❌ Muestra `Core` / `Professional` / `Evaluation` → haz el **Paso 2**.
 
-> Since late 2024, the official Microsoft **evaluation ISO already includes the
-> IoT Enterprise LTSC 2024 edition**, so most people skip Step 2 entirely.
+> Desde finales de 2024, el **ISO de evaluación oficial** de Microsoft ya incluye la
+> edición **IoT Enterprise LTSC 2024**, así que la mayoría puede saltarse el Paso 2.
 
 ---
 
-## Step 2 — Install the IoT Enterprise SKU (only if Step 1 fails)
+## Paso 2 — Instala el SKU de IoT Enterprise (solo si el Paso 1 falla)
 
-1. Grab the included [`assets/IoTEnterpriseS.zip`](assets/IoTEnterpriseS.zip) from this repo.
-2. Extract it and copy the **`IoTEnterpriseS`** folder into:
+1. Descarga el [`assets/IoTEnterpriseS.zip`](assets/IoTEnterpriseS.zip) incluido en este repo.
+2. Descomprímelo y copia la carpeta **`IoTEnterpriseS`** dentro de:
 
    ```
    C:\Windows\System32\spp\tokens\skus
    ```
 
-3. Reinstall the licenses:
+3. Reinstala las licencias:
 
    ```cmd
    cscript /nologo %windir%\system32\slmgr.vbs /rilc
    ```
 
-4. Go back to **Step 1** and confirm it now shows `IoTEnterpriseS`.
+4. Vuelve al **Paso 1** y confirma que ahora muestra `IoTEnterpriseS`.
 
 ---
 
-## Step 3 — Clear the evaluation license
+## Paso 3 — Borra la licencia de evaluación
 
-Run these **in order** (Admin prompt, copy-paste one by one):
+Ejecuta estos comandos **en orden** (terminal de administrador, copia uno a uno):
 
 ```cmd
 cscript /nologo %windir%\system32\slmgr.vbs /upk
@@ -66,75 +66,74 @@ sc config wuauserv start= auto
 net start wuauserv
 ```
 
-| Command | What it does |
+| Comando | Qué hace |
 |---|---|
-| `/upk` | Removes the evaluation key |
-| `/ckms` | Clears KMS server pointers |
-| `/cpky` | Deletes the cached key from the registry |
-| `sc` / `net` | Makes sure the licensing and Windows Update services are running |
+| `/upk` | Elimina la clave de evaluación |
+| `/ckms` | Limpia las referencias al servidor KMS |
+| `/cpky` | Borra la clave en caché del registro |
+| `sc` / `net` | Asegura que los servicios de licencias y Windows Update estén activos |
 
 ---
 
-## Step 4 — Install your genuine key
+## Paso 4 — Instala tu clave genuina
 
-**Easiest way:** `Settings → System → Activation → Change product key`,
-enter your genuine **IoT Enterprise LTSC 2024** key and follow the prompts.
+**La forma más fácil:** `Configuración → Sistema → Activación → Cambiar clave de producto`,
+introduce tu clave genuina de **IoT Enterprise LTSC 2024** y sigue los pasos.
 
-**Or from the command line:**
+**O desde la terminal:**
 
 ```cmd
-cscript /nologo %windir%\system32\slmgr.vbs /ipk <YOUR-KEY>
+cscript /nologo %windir%\system32\slmgr.vbs /ipk <TU-CLAVE>
 cscript /nologo %windir%\system32\slmgr.vbs /ato
 ```
 
 ---
 
-## Step 5 — Verify
+## Paso 5 — Verifica
 
 ```cmd
 slmgr /dlv
 slmgr /xpr
 ```
 
-You should see:
+Deberías ver:
 
-- 🟢 **License Status: Licensed**
-- 🟢 **Windows is permanently activated** (no expiry date)
+- 🟢 **Estado de licencia: con licencia (Licensed)**
+- 🟢 **Windows activado de forma permanente** (sin fecha de expiración)
 
 ---
 
-## Troubleshooting
+## Solución de problemas
 
-| Problem | Fix |
+| Problema | Solución |
 |---|---|
-| `The generic key is not used for this edition` | The GVLK only works with the `IoTEnterpriseS` SKU → complete **Step 2** first. |
-| `slmgr /xpr` still shows an expiry | The eval key was not fully removed → repeat **Step 3** in order, then **Step 4**. |
-| Activation error `0xC004F074` | KMS couldn't be reached — wait or activate with a **retail / MAK** key via `Settings`. |
-| Edition still shows "Evaluation" after Step 2 | Double-check the folder is `C:\Windows\System32\spp\tokens\skus\IoTEnterpriseS` and rerun `/rilc`. |
+| `La clave genérica no se usa para esta edición` | La GVLK solo funciona con el SKU `IoTEnterpriseS` → completa el **Paso 2** primero. |
+| `slmgr /xpr` sigue mostrando expiración | La clave de evaluación no se borró del todo → repite el **Paso 3** en orden y luego el **Paso 4**. |
+| Error de activación `0xC004F074` | No se alcanzó el KMS — espera o activa con una clave **retail / MAK** desde `Configuración`. |
+| La edición sigue mostrando "Evaluation" tras el Paso 2 | Verifica que la carpeta sea `C:\Windows\System32\spp\tokens\skus\IoTEnterpriseS` y vuelve a ejecutar `/rilc`. |
 
 ---
 
-## FAQ
+## Preguntas frecuentes
 
-**Do I need to reinstall Windows?**
-No. Everything — apps, files, settings — stays untouched.
+**¿Tengo que reinstalar Windows?**
+No. Todo — aplicaciones, archivos, ajustes — queda intacto.
 
-**What if I do nothing?**
-The evaluation keeps nagging you to activate and **expires (~90 days, rearmable)**,
-with limited enterprise features.
+**¿Qué pasa si no hago nada?**
+La evaluación sigue recordándote que actives y **expira (~90 días, prorrogable)**,
+con funciones empresariales limitadas.
 
-**Is the generic GVLK key enough?**
-It stops the evaluation but **does not activate** the system. You still need a
-**genuine key** to activate.
+**¿La clave GVLK genérica es suficiente?**
+Detiene la evaluación pero **no activa** el sistema. Aún necesitas una **clave genuina** para activar.
 
-**Can I switch back to a standard edition later?**
-No — IoT Enterprise LTSC is a different product family. You'd need a clean install.
+**¿Puedo volver a una edición estándar después?**
+No — IoT Enterprise LTSC es otra familia de producto. Necesitarías una instalación limpia.
 
 ---
 
-## Source
+## Fuente
 
-Updated from the original [ProSoftKeys tutorial](https://prosoftkeys.com/convert-windows-11-iot-enterprise-ltsc-evaluation-to-version/).
+Actualización del tutorial original de [ProSoftKeys](https://prosoftkeys.com/convert-windows-11-iot-enterprise-ltsc-evaluation-to-version/).
 
 ---
 
