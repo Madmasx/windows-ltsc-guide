@@ -41,7 +41,7 @@ Mira la línea de **Sistema operativo / Edición**:
 - ✅ Muestra `Windows(R), IoTEnterpriseS` → **el SKU ya está instalado, salta al Paso 2**.
 - ❌ Muestra `Core` / `Professional` / `Evaluation` → haz el **Paso 2**.
 
-> Desde finales de 2024, el **ISO de evaluación oficial** de Microsoft ya incluye la
+> El **ISO de evaluación oficial** de Microsoft ya incluye la
 > edición **IoT Enterprise LTSC**, así que la mayoría puede saltarse el Paso 2.
 
 ---
