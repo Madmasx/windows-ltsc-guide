@@ -1,15 +1,28 @@
-# Windows 11 IoT Enterprise LTSC 2024: Convierte Evaluación → Licencia Completa
+# Windows 11 IoT Enterprise LTSC: Convierte Evaluación → Licencia Completa
 
-> **Edición actualizada 2026.** Convierte tu Windows 11 **IoT Enterprise LTSC 2024 Evaluation**
+> **Edición actualizada 2026.** Convierte tu Windows 11 **IoT Enterprise LTSC Evaluation**
 > a una copia con licencia completa — **sin reinstalar, sin perder datos**, en ~5 minutos.
+
+---
+
+## Descarga el ISO (oficial)
+
+Baja el ISO de evaluación oficial desde el **Microsoft Evaluation Center** (gratis, solo pide registro):
+
+- 💻 Disponible para **x64** y **ARM64**
+- 🕒 Evaluación de **90 días**
+- 🔗 <https://www.microsoft.com/en-us/evalcenter/download-windows-11-iot-enterprise-ltsc-eval>
+
+> Al instalarlo **no hace falta clave**: Microsoft entrega la copia de evaluación sin pedir
+> clave de producto. Conviértela después con esta guía.
 
 ---
 
 ## Lo que necesitas
 
-- Windows 11 **IoT Enterprise LTSC 2024** (evaluación) ya instalado
+- Windows 11 **IoT Enterprise LTSC** (evaluación) ya instalado
 - Una cuenta de **Administrador**
-- Una **clave de producto genuina** de IoT Enterprise LTSC 2024
+- Una **clave de producto genuina** de IoT Enterprise LTSC
 - Conexión a internet estable
 
 ---
@@ -29,7 +42,7 @@ Mira la línea de **Sistema operativo / Edición**:
 - ❌ Muestra `Core` / `Professional` / `Evaluation` → haz el **Paso 2**.
 
 > Desde finales de 2024, el **ISO de evaluación oficial** de Microsoft ya incluye la
-> edición **IoT Enterprise LTSC 2024**, así que la mayoría puede saltarse el Paso 2.
+> edición **IoT Enterprise LTSC**, así que la mayoría puede saltarse el Paso 2.
 
 ---
 
@@ -78,7 +91,7 @@ net start wuauserv
 ## Paso 4 — Instala tu clave genuina
 
 **La forma más fácil:** `Configuración → Sistema → Activación → Cambiar clave de producto`,
-introduce tu clave genuina de **IoT Enterprise LTSC 2024** y sigue los pasos.
+introduce tu clave genuina de **IoT Enterprise LTSC** y sigue los pasos.
 
 **O desde la terminal:**
 
