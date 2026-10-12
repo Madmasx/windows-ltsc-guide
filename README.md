@@ -144,12 +144,6 @@ No — IoT Enterprise LTSC es otra familia de producto. Necesitarías una instal
 
 ---
 
-## Fuente
-
-Actualización del tutorial original de [ProSoftKeys](https://prosoftkeys.com/convert-windows-11-iot-enterprise-ltsc-evaluation-to-version/).
-
----
-
 ## `$ ls ~/contacto`
 
 [![X](https://img.shields.io/badge/X-@madmasx-000000?style=for-the-badge&logo=x&logoColor=E63946&labelColor=0d1117&color=E63946)](https://x.com/madmasx)
